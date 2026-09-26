@@ -20,11 +20,13 @@ from homeassistant.util import ulid as ulid_util
 from .const import (
     CHAT_COMPLETIONS_PATH,
     CONF_API_KEY,
+    CONF_CONTINUE_CONVERSATION,
     CONF_MODEL,
     CONF_SYSTEM_PROMPT,
     CONF_TIMEOUT,
     CONF_URL,
     DEFAULT_MODEL,
+    DEFAULT_CONTINUE_CONVERSATION,
     DEFAULT_SYSTEM_PROMPT,
     DEFAULT_TIMEOUT,
     MAX_HISTORY_EXCHANGES,
@@ -143,6 +145,9 @@ class HermesConversationEntity(conversation.ConversationEntity):
         return conversation.ConversationResult(
             response=response,
             conversation_id=conversation_id,
+            continue_conversation=self._entry.options.get(
+                CONF_CONTINUE_CONVERSATION, DEFAULT_CONTINUE_CONVERSATION
+            ),
         )
 
 

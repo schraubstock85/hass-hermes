@@ -9,10 +9,12 @@ CONF_TIMEOUT = "timeout"
 CONF_MODEL = "model"
 CONF_API_KEY = "api_key"
 CONF_SYSTEM_PROMPT = "system_prompt"
+CONF_CONTINUE_CONVERSATION = "continue_conversation"
 
 DEFAULT_URL = "http://192.168.1.100:8645"
 DEFAULT_TIMEOUT = 60
 DEFAULT_MODEL = "hermes-agent"
+DEFAULT_CONTINUE_CONVERSATION = True
 DEFAULT_SYSTEM_PROMPT = (
     "You are Hermes, a smart home voice assistant. "
     "Keep responses short and natural for spoken output. "

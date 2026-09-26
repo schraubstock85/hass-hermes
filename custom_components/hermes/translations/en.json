@@ -9,7 +9,8 @@
           "api_key": "API key (optional)",
           "model": "Model name",
           "timeout": "Request timeout (seconds)",
-          "system_prompt": "System prompt"
+          "system_prompt": "System prompt",
+          "continue_conversation": "Continue conversation"
         }
       }
     },
@@ -29,7 +30,8 @@
           "model": "Model name",
           "timeout": "Request timeout (seconds)",
           "api_key": "API key (optional)",
-          "system_prompt": "System prompt"
+          "system_prompt": "System prompt",
+          "continue_conversation": "Continue conversation"
         }
       }
     }

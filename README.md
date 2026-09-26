@@ -218,6 +218,7 @@ Copy `custom_components/hermes/` into `<HA config>/custom_components/hermes/` an
 | API key (optional) | (empty) | Only needed if the bridge requires auth. Sent as an `Authorization: Bearer` header on every request |
 | Model | `hermes-agent` | Sent in the OpenAI request body |
 | Timeout (s) | `60` | Raise to 90+ if Hermes runs heavy tool chains |
+| Continue conversation | `true` | Keep the Voice Assistant session open for follow-up questions |
 | System prompt | (default supplied) | Editable later via the integration's options |
 
 Setup hits `/v1/models` on the bridge to verify reachability; if it can't connect you'll see "Could not reach the Hermes bridge." If the bridge answers 401, setup shows "The bridge requires an API key, or the key was rejected." — fill in the API key field (on the Hermes host the key is `API_SERVER_KEY` in `~/.hermes/.env`).

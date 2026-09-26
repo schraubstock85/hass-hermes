@@ -14,11 +14,13 @@ from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
 from .const import (
     CONF_API_KEY,
+    CONF_CONTINUE_CONVERSATION,
     CONF_MODEL,
     CONF_SYSTEM_PROMPT,
     CONF_TIMEOUT,
     CONF_URL,
     DEFAULT_MODEL,
+    DEFAULT_CONTINUE_CONVERSATION,
     DEFAULT_SYSTEM_PROMPT,
     DEFAULT_TIMEOUT,
     DEFAULT_URL,
@@ -92,6 +94,9 @@ class HermesConfigFlow(ConfigFlow, domain=DOMAIN):
                         CONF_SYSTEM_PROMPT: user_input.get(
                             CONF_SYSTEM_PROMPT, DEFAULT_SYSTEM_PROMPT
                         ),
+                        CONF_CONTINUE_CONVERSATION: user_input.get(
+                            CONF_CONTINUE_CONVERSATION, DEFAULT_CONTINUE_CONVERSATION
+                        ),
                     },
                 )
 
@@ -104,6 +109,10 @@ class HermesConfigFlow(ConfigFlow, domain=DOMAIN):
                     vol.Coerce(int), vol.Range(min=5, max=600)
                 ),
                 vol.Optional(CONF_SYSTEM_PROMPT, default=DEFAULT_SYSTEM_PROMPT): str,
+                vol.Optional(
+                    CONF_CONTINUE_CONVERSATION,
+                    default=DEFAULT_CONTINUE_CONVERSATION,
+                ): bool,
             }
         )
         return self.async_show_form(step_id="user", data_schema=schema, errors=errors)
@@ -138,6 +147,12 @@ class HermesOptionsFlow(OptionsFlow):
                     CONF_SYSTEM_PROMPT,
                     default=current.get(CONF_SYSTEM_PROMPT, DEFAULT_SYSTEM_PROMPT),
                 ): str,
+                vol.Optional(
+                    CONF_CONTINUE_CONVERSATION,
+                    default=current.get(
+                        CONF_CONTINUE_CONVERSATION, DEFAULT_CONTINUE_CONVERSATION
+                    ),
+                ): bool,
             }
         )
         return self.async_show_form(step_id="init", data_schema=schema)
